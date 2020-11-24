@@ -167,7 +167,7 @@ mark, ins { background: #eee; text-decoration: none; }
 
 big { font-size: 125%; }
 
-img { max-width: 100%; height: 200px; width:auto }
+img { max-width: 100%; height: auto; width:auto }
 
 iframe { border: 0; }
 
@@ -3471,6 +3471,7 @@ i.fa{
 
 .custom-logo{
 	max-width: 50% !important;
+	height: auto;
 }
 
 .woocommerce h2{
