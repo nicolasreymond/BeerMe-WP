@@ -447,7 +447,7 @@ a:hover, a:active { color: #333333; outline: 0; }
 }
 .site-branding-text .site-description { color: #fff; margin: 0px; }
 .navbar-custom .navbar-nav { float: none; margin: 0 auto; display: table; }
-.navbar-custom .nav li > a { position: relative; color: #000; margin: 10px 24px; }
+.navbar-custom .nav li > a { position: relative;  margin: 10px 24px; }
 .navbar-custom .nav .dropdown-menu {
 	background: rgba(7, 15, 25, 0.9);
 	border-radius: 0;
@@ -519,7 +519,9 @@ a:hover, a:active { color: #333333; outline: 0; }
 	}
 }
 .mobile-header { display: none; }
-
+.mobile-header .navbar-collapse .menu-item {
+	color: #fff;
+}
 @media (max-width: 991px) {
 	.desktop-header { display: none !important; }
 	.mobile-header { display: block !important; }
@@ -552,6 +554,7 @@ a:hover, a:active { color: #333333; outline: 0; }
 		margin-right: 0rem !important; 
 		margin-top: 15px !important;
 		margin-bottom: 15px !important;
+		color: white;
 	}
 	.navbar-custom.navbar-transparent li > a { 
 		margin-left: 1.500rem !important; 
