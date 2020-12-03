@@ -2823,7 +2823,6 @@ body.page .navbar-custom, body.woocommerce .navbar-custom, .archive .navbar-cust
 /*Widget Search*/
 .widget_search .search-submit { margin-top: 10px; }
 /*Sidebar Calender*/
-.widget_calendar {}
 .widget table {
 	font-weight: 500;
 	color: #393939;
@@ -3221,8 +3220,7 @@ Widget Pages, Widget Recent Comments, Widget Recent Entries */
 /*	36.0 WP DEFAULT CLASSES
 /*===================================================================================*/
 
-.sticky{}
-.bypostauthor{}
+
 #attachment_907 { width: 100% !important; }
 img.alignleft, .wp-caption.alignleft{ margin-right: 30px; }
 img.alignright, .wp-caption.alignright{ margin-left: 30px; float: right;}
@@ -3483,6 +3481,7 @@ div.container:nth-child(2){
 .woocommerce ul.products li.product a img {
 	height: auto;
 	width: 100%;
+	object-fit: contain;
 	max-height: 200px; /* TO REMOVE */
 }
 
