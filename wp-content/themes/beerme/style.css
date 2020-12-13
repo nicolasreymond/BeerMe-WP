@@ -3486,8 +3486,7 @@ div.container:nth-child(2){
 }
 
 
-input[type="text"].contact-form,
-textarea.contact-form{
+.nre-contact-form {
 	background-color: rgba(117, 117, 117, 0.5) !important;
 }
 
