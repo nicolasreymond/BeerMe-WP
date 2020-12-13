@@ -67,7 +67,7 @@ $selective_refresh = isset( $wp_customize->selective_refresh ) ? 'postMessage' :
 		$wp_customize->add_setting(
 			'blog_meta_section_enable',
 			array('capability'  => 'edit_theme_options',
-			'default' => true,
+			'default' => false,
 			'sanitize_callback' => 'innofit_sanitize_checkbox',
 			
 			));

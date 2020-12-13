@@ -1,0 +1,36 @@
+global:
+  checkNewVersion: true
+  sendAnonymousUsage: false
+
+log:
+  level: DEBUG 
+
+
+entryPoints:
+  web:
+    address: ":80"
+  web-secure:
+    address: ":443"
+  
+api:
+  dashboard: true
+  insecure: true
+
+providers:
+  docker:
+    endpoint: "unix:///var/run/docker.sock"
+    exposedByDefault: false
+    network: public
+    swarmMode: false
+  file:
+    filename: /etc/traefik/traefik.yml
+
+tls:
+  # certificates:
+  #   - certFile: "/certs/cert.pem"
+  #     keyFile: "/certs/key.pem"
+  stores:
+    default:
+      defaultCertificate:
+        certFile: "/certs/cert.pem"
+        keyFile: "/certs/key.pem"

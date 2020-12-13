@@ -272,13 +272,28 @@ function add_login_logout_link($items, $args)
 function my_login_logo() { ?>
     <style type="text/css">
         #login h1 a, .login h1 a {
-            background-image: url(<?php echo get_stylesheet_directory_uri(); ?>/images/site-login-logo.png);
-			height:65px;
+            background-image: url(<?php echo get_stylesheet_directory_uri(); ?>/images/beerme-logo.svg);
+			height:130px;
 			width:320px;
-			background-size: 320px 65px;
+			background-size: 320px 150px;
 			background-repeat: no-repeat;
         	padding-bottom: 30px;
+			margin-top: 25px;
         }
     </style>
 <?php }
 add_action('login_enqueue_scripts', 'my_login_logo');
+
+add_filter( 'login_headerurl', 'login_header_url' );
+function login_header_url(){
+	return "https://beerme-online.ch";
+}
+
+function custom_redirects()
+{
+    if ($_SERVER["REQUEST_URI"] == "/") {
+        wp_redirect(home_url('/accueil/'));
+        die;
+    }
+}
+add_action('template_redirect', 'custom_redirects');

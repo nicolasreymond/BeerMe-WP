@@ -1,32 +1,51 @@
 version: '3.3'
 
 services:
-   db:
-     image: mysql:5.7
-     volumes:
-       - db_data:/var/lib/mysql
-     restart: always
-     environment:
-       MYSQL_ROOT_PASSWORD: somewordpress
-       MYSQL_DATABASE: wordpress
-       MYSQL_USER: wordpress
-       MYSQL_PASSWORD: wordpress
+  db:
+    image: mysql:5.7
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: somewordpress
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
 
-   wordpress:
-     depends_on:
-       - db
-     image: nreymond/wordpress-and-wp-cli:latest
-     build: wordpress-and-wp-cli
-     ports:
-       - "8000:80"
-     volumes:
-       - "./wp-content:/var/www/html/wp-content"
-       - "./config:/var/www/html/config"
-     restart: always
-     environment:
-       WORDPRESS_DB_HOST: db:3306
-       WORDPRESS_DB_USER: wordpress
-       WORDPRESS_DB_PASSWORD: wordpress
-       WORDPRESS_DB_NAME: wordpress
+  traefik:
+    image: traefik:latest
+    ports:
+      - 8080:8080
+      - 8443:443
+      
+    volumes:
+      - ./traefik.yml:/etc/traefik/traefik.yml
+      - ./certs/:/certs/
+      - /var/run/docker.sock:/var/run/docker.sock
+
+
+
+  wordpress:
+    depends_on:
+      - db
+    image: nreymond/wordpress-and-wp-cli:latest
+    build: wordpress-and-wp-cli
+    ports:
+      - "8000:80"
+    volumes:
+      - "./wp-content:/var/www/html/wp-content"
+      - "./config:/var/www/html/config"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.wordpress.rule=Host(`localhost`)"
+      - "traefik.http.routers.wordpress.tls=true"
+    restart: always
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DEBUG: 1
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_DB_NAME: wordpress
+      XDEBUG_CONFIG: remote_host=192.168.1.121 remote_enable=1
 volumes:
     db_data: {}
