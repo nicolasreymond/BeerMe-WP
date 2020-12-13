@@ -3485,10 +3485,10 @@ div.container:nth-child(2){
 	max-height: 200px; /* TO REMOVE */
 }
 
-
-input[type="text"].contact-form,
-textarea.contact-form{
+.nre-contact-form {
 	background-color: rgba(117, 117, 117, 0.5) !important;
+	border: 0px;
+	color: white;
 }
 
 .contact-form label{
