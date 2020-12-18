@@ -91,7 +91,7 @@
 												$shop_button .= '</a>';
 												
 												$shop_button .= '<a href="'.esc_url($cart_link).'" ><span class="cart-total">
-												'.sprintf(_n('%d item', '%d items', $woocommerce->cart->cart_contents_count, 'innofit'), $woocommerce->cart->cart_contents_count).'</span></a>';
+												'.sprintf(_n('%d', '%d', $woocommerce->cart->cart_contents_count, 'innofit'), $woocommerce->cart->cart_contents_count).'</span></a>';
 													
 													
 												echo $shop_button;
@@ -166,7 +166,7 @@
 												$shop_button .= '</a>';
 												
 												$shop_button .= '<a href="'.esc_url($cart_link).'" ><span class="cart-total">
-													'.sprintf(_n('%d item', '%d items', $woocommerce->cart->cart_contents_count, 'innofit'), $woocommerce->cart->cart_contents_count).'</span></a>';
+													'.sprintf(_n('%d', '%d', $woocommerce->cart->cart_contents_count, 'innofit'), $woocommerce->cart->cart_contents_count).'</span></a>';
 													
 													
 												echo $shop_button;
